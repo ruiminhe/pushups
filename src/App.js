@@ -1,25 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+//import {useState} from 'react';
+import Draw from './Draw';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+//  const [score, setScore] = useState(0);
+
+  return <div>
+            <center>
+          <h1>Push-Up Counter</h1>
+          <Draw />
+            <p>Modified from <a href="https://www.youtube.com/watch?v=EL0eHokSSJk">here</a>.</p>
+          </center>
+        </div>
 }
 
 export default App;
