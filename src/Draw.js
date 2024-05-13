@@ -250,11 +250,9 @@ function inUpPosition() {
     //console.log('In up position')
     if (downPosition === true) {
       if (timeCount >= 60){
-        var msg1 = new SpeechSynthesisUtterance('Time Out');
-        window.speechSynthesis.speak(msg1);
+        upSpeak('Time Out');
       }else{
-        var msg = new SpeechSynthesisUtterance((reps+1) + '');
-        window.speechSynthesis.speak(msg);
+        upSpeak((reps+1) + '');
         if (reps === 0){
           isOn = true;
           iterateTime(0);
@@ -273,6 +271,10 @@ function reset(e){
   timeCount = 0;
 }
 
+async function upSpeak(txt){
+  var msg = new SpeechSynthesisUtterance(txt);
+  window.speechSynthesis.speak(msg);
+}
 
 function inDownPosition(p5) {
   var elbowAboveNose = false;
@@ -290,7 +292,7 @@ function inDownPosition(p5) {
   }
   p5.stroke('white');
   p5.textSize(30 * scale);
-  if (noseY > poses[0].keypoints[7].y) {
+  if (noseY > 0.9 * poses[0].keypoints[7].y) {
     elbowAboveNose = true;
 
     if (highlightBack){
@@ -300,8 +302,7 @@ function inDownPosition(p5) {
       if ((Math.abs(elbowAngle) > 70) && (Math.abs(elbowAngle) < 110)) {
         //console.log('In down position')
         if (upPosition === true) {
-          var msg = new SpeechSynthesisUtterance('Up');
-          window.speechSynthesis.speak(msg);
+          upSpeak('Up');
         }
         downPosition = true;
         upPosition = false;
